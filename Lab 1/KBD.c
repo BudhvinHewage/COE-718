@@ -26,13 +26,20 @@ uint32_t KBD_val  = 0;
 void KBD_Init (void) { 
  
   LPC_SC->PCONP     |= (1 << 15);            /* enable power to GPIO & IOCON  */ 
-  
+  /* since we need to power up bit 15, we take the 1 and shift it 15 places   */
+  /* left, and use the or-assignment to mask(leave the other bits unchanged)  */
   
 /* P1.20, P1.23..26 is GPIO (Joystick) */ 
-  LPC_PINCON->PINSEL3 &= ~((3<< 8)|(3<<14)|(3<<16)|(3<<18)|(3<<20));   
+  LPC_PINCON->PINSEL3 &= ~((3<< 8)|(3<<14)|(3<<16)|(3<<18)|(3<<20));
+  /* since we need to set FIODIR to drive these pins, we used 00 to ensure    */
+  /* that the pins are GPIO. We use the and-assignment to mask(leave the      */
+  /* other bits unchanged)                                                    */
  
 /* P1.20, P1.23..26 is input */ 
-  LPC_GPIO1->FIODIR   &= ~((1<<20)|(1<<23)|(1<<24)|(1<<25)|(1<<26));  
+  LPC_GPIO1->FIODIR   &= ~((1<<20)|(1<<23)|(1<<24)|(1<<25)|(1<<26));
+  /* same concept as the last set, where we are setting the pins as inputs    */
+  /* which is ensuring these specific bits are 0, done by masking and using   */
+  /* AND to drive these bits low while the rest stay unchanged                */  
 } 
  
 /*---------------------------------------------------------------------------- 

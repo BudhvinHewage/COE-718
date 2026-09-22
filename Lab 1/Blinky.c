@@ -13,7 +13,8 @@
 #include "LPC17xx.h"                       
 #include "GLCD.h"
 #include "LED.h"
-#include "Board_ADC.h" 
+#include "Board_ADC.h"
+#include "KBD.h" 
 
 #define __FI        1                      /* Font index 16x24               */
 #define __USE_LCD   0										/* Uncomment to use the LCD */
@@ -59,6 +60,8 @@ int main (void) {
   uint32_t AD_value = 0U;
   uint32_t AD_print = 0U;
 
+  unsigned int last_led = 0;
+
   LED_Init();                                /* LED Initialization            */
   ADC_Initialize();                                /* ADC Initialization            */
 
@@ -68,13 +71,13 @@ int main (void) {
   GLCD_Clear(White);                         /* Clear graphical LCD display   */
   GLCD_SetBackColor(Blue);
   GLCD_SetTextColor(Yellow);
-  GLCD_DisplayString(0, 0, __FI, "     COE718 Demo    ");
+  GLCD_DisplayString(0, 0, __FI, "     COE718 Lab 1   ");
 	GLCD_SetTextColor(White);
   GLCD_DisplayString(1, 0, __FI, "       Blinky.c     ");
-  GLCD_DisplayString(2, 0, __FI, "  Turn pot for LEDs ");
+  GLCD_DisplayString(2, 0, __FI, " Move Joystick for FB ");
   GLCD_SetBackColor(White);
   GLCD_SetTextColor(Blue);
-  GLCD_DisplayString(6, 0, __FI, "AD value:            ");
+  GLCD_DisplayString(6, 0, __FI, "Last Direction:         ");
 #endif
 
   //SystemCoreClockUpdate();
@@ -82,40 +85,48 @@ int main (void) {
 
   while (1) {                                /* Loop forever                  */
 
-    /* AD converter input                                                     */
-    // AD converter input
-    res = ADC_GetValue();
-    if (res != -1) {                     // If conversion has finished
-      ADC_last = (uint16_t)res;
-      
-      AD_sum += ADC_last;                // Add AD value to sum
-      if (++AD_cnt == 16U) {             // average over 16 values
-        AD_cnt = 0U;
-        AD_value = AD_sum >> 4;          // average devided by 16
-        AD_sum = 0U;
-      }
-    }
+    /* the goal is to establish the current value of a zero value for the state of the 
+    joystick and then identify when it changes, and display theose changes on the LCD
+    indicating the direction chosen in words, and use the LED to indicate the direction
+    as well */
 
-    if (AD_value != AD_print) {
-      AD_print = AD_value;               // Get unscaled value for printout
-      AD_dbg   = (uint16_t)AD_value;
-
-      sprintf(text, "0x%04X", AD_value); // format text for print out
+    current_state = get_button();              // Get current state of joystick
     
+    if (current_state != last_state) {            // If conversion has finished
+      Led_Off(last_led);                          // Turn off last LED
+      if (current_state == 0) {                           // If no button pressed
+        last_led = 0;                             // Reset last LED
+        GLCD_SetTextColor(White);
+        GLCD_DisplayString(6,  9, __FI, (unsigned char *)"NONE  ");
+      }
+      if (current_state == KBD_SELECT) {                       // If select button pressed
+        last_led = 1;                             // Set last LED to 1
+        GLCD_SetTextColor(Blue);
+        GLCD_DisplayString(6,  9, __FI, (unsigned char *)"SELECT");
+      }
+      if (current_state == KBD_UP) {                       // If up button pressed
+        last_led = 2;                             // Set last LED to 2
+        GLCD_SetTextColor(Blue);
+        GLCD_DisplayString(6,  9, __FI, (unsigned char *)"UP    ");
+      }
+      if (current_state == KBD_DOWN) {                       // If down button pressed
+        last_led = 3;                             // Set last LED to 3
+        GLCD_SetTextColor(Blue);
+        GLCD_DisplayString(6,  9, __FI, (unsigned char *)"DOWN  ");
+      }
+      if (current_state == KBD_LEFT) {                       // If left button pressed
+        last_led = 4;                             // Set last LED to 4
+        GLCD_SetTextColor(Blue);
+        GLCD_DisplayString(6,  9, __FI, (unsigned char *)"LEFT  ");
+      }
+      if (current_state == KBD_RIGHT) {                       // If right button pressed
+        last_led = 5;                             // Set last LED to 5
+        GLCD_SetTextColor(Blue);
+        GLCD_DisplayString(6,  9, __FI, (unsigned char *)"RIGHT ");
+      }
+    }    
 			
-#ifdef __USE_LCD
-      GLCD_SetTextColor(Red);
-      GLCD_DisplayString(6,  9, __FI,  (unsigned char *)text);
-			GLCD_SetTextColor(Green);
-      GLCD_Bargraph (144, 7*24, 176, 20, (AD_value >> 2)); /* max bargraph is 10 bit */
-#endif
-    }
-
-    /* Print message with AD value every 10 ms                               */
-    if (clock_ms) {
-      clock_ms = 0;
-
-      printf("AD value: %s\r\n", text);
-    }
+      last_state = current_state;                          // Update last state
   }
 }
+
