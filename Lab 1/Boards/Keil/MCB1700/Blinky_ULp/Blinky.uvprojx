@@ -136,7 +136,7 @@
             <Capability>1</Capability>
             <DriverSelection>4096</DriverSelection>
           </Flash1>
-          <bUseTDR>1</bUseTDR>
+          <bUseTDR>0</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
           <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
@@ -428,6 +428,16 @@
               <FileType>5</FileType>
               <FilePath>..\..\..\..\LED.h</FilePath>
             </File>
+            <File>
+              <FileName>KBD.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\KBD.c</FilePath>
+            </File>
+            <File>
+              <FileName>KBD.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\KBD.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -445,53 +455,6 @@
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
-          <Files>
-            <File>
-              <FileName>Blinky.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\Blinky.c</FilePath>
-            </File>
-            <File>
-              <FileName>Blinky.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\Blinky.h</FilePath>
-            </File>
-            <File>
-              <FileName>Font_6x8_h.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\Font_6x8_h.h</FilePath>
-            </File>
-            <File>
-              <FileName>Font_16x24_h.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\Font_16x24_h.h</FilePath>
-            </File>
-            <File>
-              <FileName>GLCD.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\GLCD.h</FilePath>
-            </File>
-            <File>
-              <FileName>GLCD_SPI_LPC1700.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\GLCD_SPI_LPC1700.c</FilePath>
-            </File>
-            <File>
-              <FileName>IRQ.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\IRQ.c</FilePath>
-            </File>
-            <File>
-              <FileName>LED.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\LED.c</FilePath>
-            </File>
-            <File>
-              <FileName>LED.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\LED.h</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>::Compiler</GroupName>
@@ -923,6 +886,16 @@
               <FileType>5</FileType>
               <FilePath>..\..\..\..\LED.h</FilePath>
             </File>
+            <File>
+              <FileName>KBD.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\KBD.c</FilePath>
+            </File>
+            <File>
+              <FileName>KBD.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\KBD.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -940,53 +913,6 @@
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
-          <Files>
-            <File>
-              <FileName>Blinky.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\Blinky.c</FilePath>
-            </File>
-            <File>
-              <FileName>Blinky.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\Blinky.h</FilePath>
-            </File>
-            <File>
-              <FileName>Font_6x8_h.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\Font_6x8_h.h</FilePath>
-            </File>
-            <File>
-              <FileName>Font_16x24_h.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\Font_16x24_h.h</FilePath>
-            </File>
-            <File>
-              <FileName>GLCD.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\GLCD.h</FilePath>
-            </File>
-            <File>
-              <FileName>GLCD_SPI_LPC1700.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\GLCD_SPI_LPC1700.c</FilePath>
-            </File>
-            <File>
-              <FileName>IRQ.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\IRQ.c</FilePath>
-            </File>
-            <File>
-              <FileName>LED.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\LED.c</FilePath>
-            </File>
-            <File>
-              <FileName>LED.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\LED.h</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>::Compiler</GroupName>
@@ -1418,6 +1344,16 @@
               <FileType>5</FileType>
               <FilePath>..\..\..\..\LED.h</FilePath>
             </File>
+            <File>
+              <FileName>KBD.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\KBD.c</FilePath>
+            </File>
+            <File>
+              <FileName>KBD.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\KBD.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1435,53 +1371,6 @@
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
-          <Files>
-            <File>
-              <FileName>Blinky.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\Blinky.c</FilePath>
-            </File>
-            <File>
-              <FileName>Blinky.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\Blinky.h</FilePath>
-            </File>
-            <File>
-              <FileName>Font_6x8_h.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\Font_6x8_h.h</FilePath>
-            </File>
-            <File>
-              <FileName>Font_16x24_h.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\Font_16x24_h.h</FilePath>
-            </File>
-            <File>
-              <FileName>GLCD.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\GLCD.h</FilePath>
-            </File>
-            <File>
-              <FileName>GLCD_SPI_LPC1700.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\GLCD_SPI_LPC1700.c</FilePath>
-            </File>
-            <File>
-              <FileName>IRQ.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\IRQ.c</FilePath>
-            </File>
-            <File>
-              <FileName>LED.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\LED.c</FilePath>
-            </File>
-            <File>
-              <FileName>LED.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\..\LED.h</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>::Compiler</GroupName>

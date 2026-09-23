@@ -96,7 +96,7 @@ int main (void) {
     current_state = get_button();              // Get current state of joystick
     
     if (current_state != last_state) {            // If conversion has finished
-      LED_Off(last_led);                          // Turn off last LED
+      LED_Off(led);                          // Turn off last LED
       if (current_state == 0) {                           // If no button pressed
         GLCD_SetTextColor(White);
         GLCD_DisplayString(6,  9, __FI, (unsigned char *)"NONE  ");

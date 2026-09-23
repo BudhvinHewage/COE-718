@@ -12,3 +12,4 @@
 .\swo_trace\blinky_1.o: ..\..\..\..\GLCD.h
 .\swo_trace\blinky_1.o: ..\..\..\..\LED.h
 .\swo_trace\blinky_1.o: C:\Users\ECBME\AppData\Local\Arm\Packs\Keil\MDK-Middleware\7.12.0\Board\Board_ADC.h
+.\swo_trace\blinky_1.o: ..\..\..\..\KBD.h
