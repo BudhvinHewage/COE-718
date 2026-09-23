@@ -61,8 +61,8 @@ int main (void) {
   uint32_t AD_print = 0U;
 
   unsigned int led = 0;
-  uint32_t current_state = 0;
-  uint32_t last_state = 0;
+  uint16_t current_state = 0;
+  uint16_t last_state = 0;
 
 
   LED_Init();                                /* LED Initialization            */
@@ -80,11 +80,11 @@ int main (void) {
   GLCD_DisplayString(2, 0, __FI, " Move Joystick for FB ");
   GLCD_SetBackColor(White);
   GLCD_SetTextColor(Blue);
-  GLCD_DisplayString(6, 0, __FI, "Last Direction:         ");
+  GLCD_DisplayString(6, 0, __FI, "Direction:  ");
 #endif
 
   //SystemCoreClockUpdate();
-  //SysTick_Config(SystemCoreClock/100);       /* Generate interrupt each 10 ms */
+  SysTick_Config(SystemCoreClock/100);       /* Generate interrupt each 10 ms */
 
   while (1) {                                /* Loop forever                  */
 
@@ -98,25 +98,29 @@ int main (void) {
     if (current_state != last_state) {            // If conversion has finished                         // Turn off last LED
       if (current_state == KBD_SELECT) {                       // If select button pressed
         GLCD_SetTextColor(Blue);
-        GLCD_DisplayString(6,  9, __FI, (unsigned char *)"SELECT");
+        GLCD_DisplayString(6,  12, __FI, (unsigned char *)"SELECT");
+        LED_On(0);                                  // Turn on current LED
       }
       if (current_state == KBD_UP) {                       // If up button pressed                            // Set last LED to 2
         GLCD_SetTextColor(Blue);
-        GLCD_DisplayString(6,  9, __FI, (unsigned char *)"UP    ");
+        GLCD_DisplayString(6,  12, __FI, (unsigned char *)"UP    ");
+        LED_On(2);                                  // Turn on current LED
       }
       if (current_state == KBD_DOWN) {                       // If down button pressed                        // Set last LED to 3
         GLCD_SetTextColor(Blue);
-        GLCD_DisplayString(6,  9, __FI, (unsigned char *)"DOWN  ");
+        GLCD_DisplayString(6,  12, __FI, (unsigned char *)"DOWN  ");
+        LED_On(3);                                  // Turn on current LED
       }
       if (current_state == KBD_LEFT) {                       // If left button pressed                           // Set last LED to 4
         GLCD_SetTextColor(Blue);
-        GLCD_DisplayString(6,  9, __FI, (unsigned char *)"LEFT  ");
+        GLCD_DisplayString(6,  12, __FI, (unsigned char *)"LEFT  ");
+        LED_On(4);                                  // Turn on current LED
       }
       if (current_state == KBD_RIGHT) {                       // If right button pressed                            // Set last LED to 5
         GLCD_SetTextColor(Blue);
-        GLCD_DisplayString(6,  9, __FI, (unsigned char *)"RIGHT ");
-      }
-      LED_On(current_state);                                  // Turn on current LED
+        GLCD_DisplayString(6,  12, __FI, (unsigned char *)"RIGHT ");
+        LED_On(5);                                  // Turn on current LED
+      }                              // Turn on current LED
     }    
 			
       last_state = current_state;                          // Update last state
