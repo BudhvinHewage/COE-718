@@ -95,7 +95,7 @@ int main (void) {
 
     current_state = get_button();              // Get current state of joystick
     
-    if (current_state != KBD_MASK) {            // If conversion has finished                         // Turn off last LED
+    if (current_state != last_state) {            // If conversion has finished                         // Turn off last LED
       if (current_state == KBD_SELECT) {                       // If select button pressed
         GLCD_SetTextColor(Blue);
         GLCD_DisplayString(6,  9, __FI, (unsigned char *)"SELECT");
